@@ -1,0 +1,31 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=10199 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=left>Many deaf people throughout the world use sign language.</P>
+	</SYNC>
+	<SYNC Start=4033>
+		<P Class=ENUSCC align=left>Like spoken languages</P>
+	</SYNC>
+	<SYNC Start=5866>
+		<P Class=ENUSCC align=left>sign languages vary from country to country.</P>
+	</SYNC>
+	<SYNC Start=10166 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+

@@ -1,0 +1,48 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=15233 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>Astronaut</P>
+		<P Class=ENUSCC align=center>I'm going to try to get in the bottom bolt now.</P>
+	</SYNC>
+	<SYNC Start=3533>
+		<P Class=ENUSCC ID=Source>Mission Control</P>
+		<P Class=ENUSCC align=center>You had a good alignments test.</P>
+	</SYNC>
+	<SYNC Start=5800>
+		<P Class=ENUSCC ID=Source>Astronaut</P>
+		<P Class=ENUSCC align=center>Oh, good!</P>
+	</SYNC>
+	<SYNC Start=5800>
+		<P Class=ENUSCC ID=Source>Astronaut 2</P>
+		<P Class=ENUSCC align=center>All right!</P>
+	</SYNC>
+	<SYNC Start=6800>
+		<P Class=ENUSCC align=center>Outstanding.</P>
+	</SYNC>
+	<SYNC Start=8133>
+		<P Class=ENUSCC ID=Source>Astronaut 3</P>
+		<P Class=ENUSCC align=center>It's hard for me because it's stretched.</P>
+	</SYNC>
+	<SYNC Start=10566>
+		<P Class=ENUSCC ID=Source>Astronaut 1</P>
+		<P Class=ENUSCC align=center>Okay, I'm going to move it to port.</P>
+	</SYNC>
+	<SYNC Start=15200 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+

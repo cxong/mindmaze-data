@@ -1,0 +1,54 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=25233 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=left>In August 1991, communist hard-liners staged a coup attempt</P>
+	</SYNC>
+	<SYNC Start=3500>
+		<P Class=ENUSCC align=left>after Mikhail Gorbachev proposed greater independence</P>
+	</SYNC>
+	<SYNC Start=6733>
+		<P Class=ENUSCC align=left>for the republics of the Soviet Union.</P>
+	</SYNC>
+	<SYNC Start=9033>
+		<P Class=ENUSCC ID=Source>Sound Effects</P>
+		<P Class=ENUSCC align=left>( <i>applause</i> )</P>
+	</SYNC>
+	<SYNC Start=10233>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=left>Boris Yeltsin led a popular resistance to put down the coup</P>
+	</SYNC>
+	<SYNC Start=13633>
+		<P Class=ENUSCC align=left>and the Communist party was suspended.</P>
+	</SYNC>
+	<SYNC Start=15800>
+		<P Class=ENUSCC align=left>In December, Yeltsin and other republic leaders</P>
+	</SYNC>
+	<SYNC Start=18500>
+		<P Class=ENUSCC align=left>created the Commonwealth of Independent States.</P>
+	</SYNC>
+	<SYNC Start=21200>
+		<P Class=ENUSCC align=left>Gorbachev then resigned</P>
+	</SYNC>
+	<SYNC Start=22533>
+		<P Class=ENUSCC align=left>and the Soviet Union was officially dissolved.</P>
+	</SYNC>
+	<SYNC Start=25200 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+

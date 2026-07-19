@@ -1,0 +1,34 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=12499 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=center>Tree frogs build a nest of foam by beating their legs.</P>
+	</SYNC>
+	<SYNC Start=3566>
+		<P Class=ENUSCC align=center>The marsupial frog carries its eggs in a pouch on its back.</P>
+	</SYNC>
+	<SYNC Start=7500>
+		<P Class=ENUSCC align=center>The gastric breeding frog swallows its eggs</P>
+	</SYNC>
+	<SYNC Start=10333>
+		<P Class=ENUSCC align=center>and regurgitates hatched young.</P>
+	</SYNC>
+	<SYNC Start=12466 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+

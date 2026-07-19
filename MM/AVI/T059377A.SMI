@@ -1,0 +1,38 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=12333 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=left>An endoscope features a flexible tip</P>
+	</SYNC>
+	<SYNC Start=2033>
+		<P Class=ENUSCC align=left>with specialized surgical attachments.</P>
+	</SYNC>
+	<SYNC Start=4200>
+		<P Class=ENUSCC ID=Source>Surgeon</P>
+		<P Class=ENUSCC align=left>There it goes, cutting through very nicely.</P>
+	</SYNC>
+	<SYNC Start=6933>
+		<P Class=ENUSCC align=left>See, you've got to cut quite a long way</P>
+	</SYNC>
+	<SYNC Start=9466>
+		<P Class=ENUSCC align=left>because it's quite a large stone to get out.</P>
+	</SYNC>
+	<SYNC Start=12300 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+

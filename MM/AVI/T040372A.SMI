@@ -1,0 +1,100 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=70366 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>News announcer</P>
+		<P Class=ENUSCC align=center>The fourth major hurricane of the season</P>
+	</SYNC>
+	<SYNC Start=2633>
+		<P Class=ENUSCC align=center>slams the Jacksonville beach</P>
+	</SYNC>
+	<SYNC Start=4066>
+		<P Class=ENUSCC align=center>and points north and south along the Florida-Georgia coastline.</P>
+	</SYNC>
+	<SYNC Start=7333>
+		<P Class=ENUSCC align=center>Winds of 100 miles an hour and upwards...</P>
+	</SYNC>
+	<SYNC Start=9900>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=center>People have long known the destructive nature of hurricanes.</P>
+	</SYNC>
+	<SYNC Start=13133>
+		<P Class=ENUSCC align=center>These storms, bringing heavy winds and rain</P>
+	</SYNC>
+	<SYNC Start=16133>
+		<P Class=ENUSCC align=center>may last several hours</P>
+	</SYNC>
+	<SYNC Start=18600>
+		<P Class=ENUSCC align=center>and have a diameter of over 480 kilometers, or 300 miles.</P>
+	</SYNC>
+	<SYNC Start=22900>
+		<P Class=ENUSCC align=center>Hurricanes form over warm tropical oceans</P>
+	</SYNC>
+	<SYNC Start=25866>
+		<P Class=ENUSCC align=center>in areas of low air pressure.</P>
+	</SYNC>
+	<SYNC Start=28033>
+		<P Class=ENUSCC align=center>They consist of high-velocity winds blowing in a circular motion</P>
+	</SYNC>
+	<SYNC Start=31633>
+		<P Class=ENUSCC align=center>around a low-pressure center known as the eye of the storm.</P>
+	</SYNC>
+	<SYNC Start=34700>
+		<P Class=ENUSCC align=center>The only defense against hurricanes</P>
+	</SYNC>
+	<SYNC Start=36500>
+		<P Class=ENUSCC align=center>is through early warning and preparation.</P>
+	</SYNC>
+	<SYNC Start=39700>
+		<P Class=ENUSCC align=center>Meteorologists can now track these storms</P>
+	</SYNC>
+	<SYNC Start=41800>
+		<P Class=ENUSCC align=center>and measure their force through the use of radar and satellites.</P>
+	</SYNC>
+	<SYNC Start=45166>
+		<P Class=ENUSCC ID=Source>Meteorologist</P>
+		<P Class=ENUSCC align=center>It looks like now the center will pass inland sometime near dawn.</P>
+	</SYNC>
+	<SYNC Start=49066>
+		<P Class=ENUSCC align=center>As it goes across the Florida peninsula</P>
+	</SYNC>
+	<SYNC Start=51133>
+		<P Class=ENUSCC align=center>of course we're going to have significant damage here</P>
+	</SYNC>
+	<SYNC Start=54000>
+		<P Class=ENUSCC align=center>in Miami-Fort Lauderdale area.</P>
+	</SYNC>
+	<SYNC Start=55666>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=center>The National Hurricane Center's prediction was correct.</P>
+	</SYNC>
+	<SYNC Start=59166>
+		<P Class=ENUSCC align=center>In August 1992</P>
+	</SYNC>
+	<SYNC Start=60633>
+		<P Class=ENUSCC align=center>Hurricane Andrew caused billions of dollars in damage</P>
+	</SYNC>
+	<SYNC Start=64033>
+		<P Class=ENUSCC align=center>and killed a number of people</P>
+	</SYNC>
+	<SYNC Start=65666>
+		<P Class=ENUSCC align=center>when it hit the southeastern United States.</P>
+	</SYNC>
+	<SYNC Start=70333 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+

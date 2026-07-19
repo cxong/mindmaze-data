@@ -1,0 +1,37 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=14366 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=left>Despite fierce opposition</P>
+	</SYNC>
+	<SYNC Start=1566>
+		<P Class=ENUSCC align=left>Jackie Robinson broke major league baseball's color barrier in 1947.</P>
+	</SYNC>
+	<SYNC Start=5733>
+		<P Class=ENUSCC align=left>His outstanding play and character changed the game forever</P>
+	</SYNC>
+	<SYNC Start=9333>
+		<P Class=ENUSCC align=left>and earned him a place in America's history</P>
+	</SYNC>
+	<SYNC Start=11966>
+		<P Class=ENUSCC align=left>as well as in baseball's Hall of Fame.</P>
+	</SYNC>
+	<SYNC Start=14333 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+

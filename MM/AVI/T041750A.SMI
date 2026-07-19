@@ -1,0 +1,37 @@
+<SAMI>
+<Head>
+	<Copyright="(C)Copyright 1997, Microsoft Corporation">
+	<Title>Encarta Closed Captions</Title>
+	<SAMIParam Length=15433 TimeStamp="msec">
+	<STYLE TYPE="text/css">
+		<!--
+		P {font-size: 12pt; line-height: 14pt; font-family: sans-serif; font-weight: bold;}
+		.ENUSCC {Name: "English Captions" lang: en-US-CC; color: white;}
+		#Source {font-family: sans-serif; color: silver; text-align: center;}
+		-->
+	</Style>
+</Head>
+<BODY TEXT="#FFFFFF">
+	<TABLE WIDTH=240><TD BGCOLOR="Black">
+	<SYNC Start=0>
+		<P Class=ENUSCC ID=Source>Narrator</P>
+		<P Class=ENUSCC align=center>In August 1963</P>
+	</SYNC>
+	<SYNC Start=3033>
+		<P Class=ENUSCC align=center>as southerners in Congress delayed action on the new bill</P>
+	</SYNC>
+	<SYNC Start=5233>
+		<P Class=ENUSCC align=center>civil rights groups organized a massive march on Washington.</P>
+	</SYNC>
+	<SYNC Start=8133>
+		<P Class=ENUSCC align=center>More than 200,000 people filled the Mall</P>
+	</SYNC>
+	<SYNC Start=11233>
+		<P Class=ENUSCC align=center>from the Lincoln Memorial to the Washington Monument.</P>
+	</SYNC>
+	<SYNC Start=15400 Duration=33>
+		<P Class=ENUSCC> </P>
+	</SYNC>
+</Table></Body>
+</SAMI>
+
