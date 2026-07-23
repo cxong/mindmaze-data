@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <script>
+            // Load MINDMAZE.DB
+            let questions = [];
+            fetch("MINDMAZE.DB")
+                .then(response => response.arrayBuffer())
+                .then(buffer => {
+                    const view = new DataView(buffer);
+                    /**
+                     * MINDMAZE data structure:
+                     * uint32_t delimiter; // -1
+                     * uint32_t unknown;
+                     * string question; // terminated by period
+                     * byte unknown;
+                     * string answer1;
+                     * byte is_correct1; // 0x00, 0x01 or 0x02
+                     * uint32_t unknown2;
+                     * string answer2;
+                     * byte is_correct2; // 0x00, 0x01 or 0x02
+                     * uint32_t unknown3;
+                     * string answer3;
+                     * byte is_correct3; // 0x00, 0x01 or 0x02
+                     * uint32_t unknown4;
+                     * string answer4;
+                     * byte is_correct4; // 0x00, 0x01 or 0x02
+                     * byte[3] unknown5; // unknown field after last answer 3 bytes
+                     */
+                    let offset = 0;
+                    while (true) {
+                        // Try to find the delimiter
+                        while (offset < view.byteLength) {
+                            const value = view.getUint32(offset, true);
+                            if (value === 0xFFFFFFFF) {
+                                break;
+                            }
+                            offset += 1;
+                        }
+                        // Skip unknown field
+                        offset += 4;
+                        // Read question - keep reading until we get a period
+                        let question = "";
+                        while (true) {
+                            const charCode = view.getUint8(offset);
+                            offset += 1;
+                            question += String.fromCharCode(charCode);
+                            if (charCode === 0x2E) { // period
+                                break;
+                            }
+                        }
+                        console.log(`Loaded question: ${question}`);
+                        // Read answers
+                        const answers = [];
+                        for (let i = 0; i < 4; i++) {
+                            let answer = "";
+                            let isCorrect = false;
+                            while (true) {
+                                const charCode = view.getUint8(offset);
+                                offset += 1;
+                                if ([0x00, 0x01, 0x02].includes(charCode)) {
+                                    isCorrect = charCode > 0;
+                                    break;
+                                }
+                                answer += String.fromCharCode(charCode);
+                            }
+                            console.log(`- Loaded answer ${i + 1}: ${answer} (Correct: ${isCorrect})`);
+                            answers.push({ answer, isCorrect });
+                            offset += i < 3 ? 4 : 3; // Skip unknown field after each answer
+                        }
+                        questions.push({ question, answers });
+                        if (offset >= view.byteLength) {
+                            break;
+                        }
+                    }
+
+                    // Display questions
+                    const questionsDiv = document.getElementById("questions");
+                    questions.forEach((q, index) => {
+                        const questionElement = document.createElement("div");
+                        questionElement.innerHTML = `<h2>Question ${index + 1}: ${q.question}</h2>`;
+                        q.answers.forEach((a, i) => {
+                            const answerElement = document.createElement("p");
+                            answerElement.textContent = `Answer ${i + 1}: ${a.answer} ${a.isCorrect ? "(Correct)" : ""}`;
+                            questionElement.appendChild(answerElement);
+                        });
+                        questionsDiv.appendChild(questionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error loading MINDMAZE.DB:", error);
+                });
+
+        </script>
+    </head>
+    <body>
+        <h1>MINDMAZE Questions</h1>
+        <div id="questions"></div>
+    </body>
+</html>
