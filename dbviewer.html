@@ -43,6 +43,7 @@
                         offset += 4;
                         // Read question - keep reading until we get an unprintable character
                         let question = "";
+                        let hasQuote = false;
                         while (true) {
                             const charCode = view.getUint8(offset);
                             offset++;
@@ -50,10 +51,19 @@
                                 break;
                             }
                             // Special cases
-                            if (charCode === 0x2D && view.getUint8(offset - 2) === 0x3A) {
-                                break; // Stop reading if we encounter ":-"
+                            if (
+                                (charCode === 0x2D && view.getUint8(offset - 2) === 0x3A) || // :-
+                                (charCode === 0x22 && view.getUint8(offset - 2) === 0x2E && !hasQuote) || // ."
+                                (charCode === 0x23 && view.getUint8(offset - 2) === 0x2E) || // .#
+                                (charCode === 0x25 && view.getUint8(offset - 2) === 0x2E) || // .%
+                                (charCode === 0x20 && view.getUint8(offset - 2) === 0x2E) // .(space)
+                            ) {
+                                break;
                             }
                             question += String.fromCharCode(charCode);
+                            if (charCode === 0x22) {
+                                hasQuote = !hasQuote;
+                            }
                         }
                         console.log(`Loaded question: ${question}`);
                         // Read answers
@@ -70,8 +80,11 @@
                                 }
                                 answer += String.fromCharCode(charCode);
                             }
-                            console.log(`- Loaded answer ${i + 1}: ${answer} (Correct: ${isCorrect})`);
-                            answers.push({ answer, isCorrect });
+                            // Strip and convert XML tags in answers
+                            answer = answer.replace(/<it>/g, "<i>").replace(/<\/it>/g, "</i>");
+                            const answerText = answer.replace(/<[^>]+>/g, "").trim();
+                            console.log(`- Loaded answer ${i + 1}: ${answer} ${answerText} (Correct: ${isCorrect})`);
+                            answers.push({ answer, answerText, isCorrect });
                             offset += i < 3 ? 4 : 3; // Skip unknown field after each answer
                         }
                         questions.push({ question, answers });
@@ -87,7 +100,7 @@
                         questionElement.innerHTML = `<h2>Question ${index + 1}: ${q.question}</h2>`;
                         q.answers.forEach((a, i) => {
                             const answerElement = document.createElement("p");
-                            answerElement.innerHTML = `Answer ${i + 1}: <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(a.answer)}" target="_blank">${a.answer}</a> ${a.isCorrect ? "(Correct)" : ""}`;
+                            answerElement.innerHTML = `Answer ${i + 1}: <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(a.answerText)}" target="_blank">${a.answer}</a> ${a.isCorrect ? "(Correct)" : ""}`;
                             questionElement.appendChild(answerElement);
                         });
                         questionsDiv.appendChild(questionElement);
