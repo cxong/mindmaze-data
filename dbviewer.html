@@ -25,6 +25,7 @@
                      * string answer4;
                      * byte is_correct4; // 0x00, 0x01 or 0x02
                      * byte[3] unknown5; // unknown field after last answer 3 bytes
+                     * Sometimes there's extra unknown data at the end
                      */
                     let offset = 0;
                     while (true) {
@@ -36,17 +37,23 @@
                             }
                             offset += 1;
                         }
+                        // Skip the delimiter
+                        offset += 4;
                         // Skip unknown field
                         offset += 4;
-                        // Read question - keep reading until we get a period
+                        // Read question - keep reading until we get an unprintable character
                         let question = "";
                         while (true) {
                             const charCode = view.getUint8(offset);
-                            offset += 1;
-                            question += String.fromCharCode(charCode);
-                            if (charCode === 0x2E) { // period
+                            offset++;
+                            if (charCode < 0x20) {
                                 break;
                             }
+                            // Special cases
+                            if (charCode === 0x2D && view.getUint8(offset - 2) === 0x3A) {
+                                break; // Stop reading if we encounter ":-"
+                            }
+                            question += String.fromCharCode(charCode);
                         }
                         console.log(`Loaded question: ${question}`);
                         // Read answers
@@ -57,7 +64,7 @@
                             while (true) {
                                 const charCode = view.getUint8(offset);
                                 offset += 1;
-                                if ([0x00, 0x01, 0x02].includes(charCode)) {
+                                if (charCode < 0x20) {
                                     isCorrect = charCode > 0;
                                     break;
                                 }
@@ -80,7 +87,7 @@
                         questionElement.innerHTML = `<h2>Question ${index + 1}: ${q.question}</h2>`;
                         q.answers.forEach((a, i) => {
                             const answerElement = document.createElement("p");
-                            answerElement.textContent = `Answer ${i + 1}: ${a.answer} ${a.isCorrect ? "(Correct)" : ""}`;
+                            answerElement.innerHTML = `Answer ${i + 1}: <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(a.answer)}" target="_blank">${a.answer}</a> ${a.isCorrect ? "(Correct)" : ""}`;
                             questionElement.appendChild(answerElement);
                         });
                         questionsDiv.appendChild(questionElement);
