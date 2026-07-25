@@ -49,7 +49,7 @@
                         for (let i = 0; i < 4; i++) {
                             const answerLen = view.getUint8(offset);
                             offset++;
-                            let answer = new TextDecoder().decode(new Uint8Array(view.buffer.slice(offset, offset + answerLen)));
+                            let answer = new TextDecoder("ISO-8859-2").decode(new Uint8Array(view.buffer.slice(offset, offset + answerLen)));
                             // Sometimes answers are null terminated so take the slice until the first null character
                             const nullIndex = answer.indexOf("\0");
                             if (nullIndex !== -1) {
