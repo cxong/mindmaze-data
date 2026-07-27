@@ -13,6 +13,17 @@ class Answer:
     is_correct: bool
     article: str
 
+    @property
+    def wikilink(self) -> str:
+        # Transform article name into a nice Wikipedia link
+        link = self.article
+        # Transform people names
+        if ", " in link:
+            split = link.split(", ")
+            link = " ".join(split[::-1])
+        sanitised = link.replace(' ', '_')
+        return f"https://en.wikipedia.org/wiki/{sanitised}"
+
 
 @dataclass
 class Question:
@@ -26,8 +37,7 @@ def main():
     for index, q in enumerate(questions, 1):
         print(f"\nQuestion {index}: {q.question}")
         for i, a in enumerate(q.answers, 1):
-            wikipedia_url = f"https://en.wikipedia.org/wiki/{a.article.replace(' ', '_')}"
-            print(f"  {i}: {a.answer} {"✅" if a.is_correct else ""} [{wikipedia_url}] [{a.b1} {a.b2} {a.b3} {a.b4}]")
+            print(f"  {i}: {a.answer} {"✅" if a.is_correct else ""} [{a.wikilink}] [{a.b1} {a.b2} {a.b3} {a.b4}]")
 
 
 def load_questions() -> list[Question]:
