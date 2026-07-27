@@ -17,11 +17,13 @@ class Answer:
     def wikilink(self) -> str:
         # Transform article name into a nice Wikipedia link
         link = self.article
-        # Transform people names
+        # Reorder people names
         if ", " in link:
             split = link.split(", ")
             link = " ".join(split[::-1])
-        sanitised = link.replace(' ', '_')
+        # Remove parens (expansion of intialised names
+        link = re.sub(r"\(.+\)", "", link)
+        sanitised = link.strip().replace(" ", "_")
         return f"https://en.wikipedia.org/wiki/{sanitised}"
 
 
@@ -31,13 +33,19 @@ class Question:
     answers: list[Answer]
     # TODO: category, difficulty
 
+    @property
+    def text(self) -> str:
+        return self.question.replace("<it>", "<i>").replace("</it>", "</i>")
+
 
 def main():
     questions = load_questions()
     for index, q in enumerate(questions, 1):
-        print(f"\nQuestion {index}: {q.question}")
+        print(f"\nQuestion {index}: {q.text}")
         for i, a in enumerate(q.answers, 1):
-            print(f"  {i}: {a.answer} {"✅" if a.is_correct else ""} [{a.wikilink}] [{a.b1} {a.b2} {a.b3} {a.b4}]")
+            print(
+                f"  {i}: {a.answer} {'✅' if a.is_correct else ''} [{a.wikilink}] [{a.b1} {a.b2} {a.b3} {a.b4}]"
+            )
 
 
 def load_questions() -> list[Question]:
@@ -70,15 +78,15 @@ def load_questions() -> list[Question]:
         # Try to find the delimiter
         while offset < len(data):
             # Read 4 bytes as uint32 (little-endian)
-            value = struct.unpack_from('<I', data, offset)[0]
+            value = struct.unpack_from("<I", data, offset)[0]
             if value == 0xFFFFFFFF:
                 break
             offset += 1
         # Skip the delimiter (4 bytes)
         offset += 4
-        question_len = struct.unpack_from('<I', data, offset)[0]
+        question_len = struct.unpack_from("<I", data, offset)[0]
         offset += 4
-        question = data[offset:offset + question_len].decode('utf-8', errors='ignore')
+        question = data[offset : offset + question_len].decode("utf-8", errors="ignore")
         offset += question_len
 
         print(f"Loaded question: {question}")
@@ -87,32 +95,34 @@ def load_questions() -> list[Question]:
         answers = []
         for i in range(4):
             # Read answer length (1 byte)
-            answer_len = struct.unpack_from('<B', data, offset)[0]
+            answer_len = struct.unpack_from("<B", data, offset)[0]
             offset += 1
 
             # Read answer (ISO-8859-2 encoding)
-            answer = data[offset:offset + answer_len].decode('latin-1', errors='ignore')
+            answer = data[offset : offset + answer_len].decode(
+                "latin-1", errors="ignore"
+            )
 
             # Sometimes answers are null terminated - take slice until first null character
-            if (null_index := answer.find('\0')) > 0:
+            if (null_index := answer.find("\0")) > 0:
                 answer = answer[:null_index]
 
             offset += answer_len
 
             # Strip and convert XML tags in answers
-            answer = answer.replace('<it>', '<i>').replace('</it>', '</i>')
+            answer = answer.replace("<it>", "<i>").replace("</it>", "</i>")
 
             # Extract text without HTML tags
-            article = re.sub(r'<[^>]+>', '', answer).strip()
+            article = re.sub(r"<[^>]+>", "", answer).strip()
 
             # Read 4 unknown bytes
-            b1 = struct.unpack_from('<B', data, offset)[0]
+            b1 = struct.unpack_from("<B", data, offset)[0]
             offset += 1
-            b2 = struct.unpack_from('<B', data, offset)[0]
+            b2 = struct.unpack_from("<B", data, offset)[0]
             offset += 1
-            b3 = struct.unpack_from('<B', data, offset)[0]
+            b3 = struct.unpack_from("<B", data, offset)[0]
             offset += 1
-            b4 = struct.unpack_from('<B', data, offset)[0]
+            b4 = struct.unpack_from("<B", data, offset)[0]
             offset += 1
 
             print(f"- Loaded answer {i + 1}: {answer} {article} {b1} {b2} {b3} {b4}")
@@ -125,6 +135,7 @@ def load_questions() -> list[Question]:
             break
 
     return questions
+
 
 if __name__ == "__main__":
     main()
