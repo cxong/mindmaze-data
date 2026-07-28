@@ -29,21 +29,22 @@ class Answer:
     def wikititle(self) -> str:
         # Transform article name into a nice Wikipedia title
         title = self.article
+        # Remove trailing commas
+        if title.endswith(","):
+            title = title[:-1]
         # Reorder people names
+        # TODO: false positives like
+        #  The General Theory of Employment, Interest and Money
         if ", " in title:
             spl = title.split(", ")
             # Move the first name to the last place and join with a space
             # Smith, John -> John Smith
             # Norfolk, Thomas Howard, 3rd Duke of -> Thomas Howard, 3rd Duke of Norfolk
             title = ", ".join(spl[1:]) + " " + spl[0]
+        # Wikipedia doesn't like special apostrophes
+        title = title.replace("’", "'")
         # Remove parens (expansion of intialised names)
         return re.sub(r"\(.+\)", "", title).strip()
-
-    @property
-    def wikilink(self) -> str:
-        # Transform article name into a nice Wikipedia link
-        sanitised = self.wikititle.replace(" ", "_")
-        return f"https://en.wikipedia.org/wiki/{sanitised}"
 
 
 @dataclass
@@ -70,7 +71,7 @@ def main(check_articles: bool):
         print(f"\nQuestion {index}: {q.text}")
         for i, a in enumerate(q.answers, 1):
             print(
-                f"  {i}: {a.answer} {'✅' if a.is_correct else ''} [{a.wikilink}] [{a.b1} {a.b2} {a.b3} {a.b4}]"
+                f"  {i}: {a.answer} {'✅' if a.is_correct else ''} [{a.wikititle}] [{a.b1} {a.b2} {a.b3} {a.b4}]"
             )
             titles.add(a.wikititle)
     if check_articles:
@@ -105,8 +106,14 @@ def main(check_articles: bool):
                     res.raise_for_status()
                     if res.is_success:
                         data = res.json()
+                        redirects_back = {
+                            d["to"]: d["from"]
+                            for d in data["query"]["redirects"]
+                        }
                         for page in data["query"]["pages"]:
                             title = page["title"]
+                            if title in redirects_back:
+                                title = redirects_back[title]
                             if "missing" not in page:
                                 valid_articles.add(title)
                             else:
