@@ -1,0 +1,11 @@
+# Visual studio
+.vs/
+*.vcxproj*
+*.dir/
+*.sln
+x64/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
