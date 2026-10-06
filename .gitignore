@@ -4,6 +4,7 @@
 *.dir/
 *.sln
 x64/
+Debug/
 
 # CMake
 CMakeCache.txt
