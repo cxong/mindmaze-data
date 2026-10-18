@@ -26,6 +26,7 @@ Note: some files are missing between the MMBAG and ITS/EIT files, they may be un
 
 | File | Use |
 | --- | --- |
+| 1_2.MID etc. | Played after selecting a door in the start game sequence. Not used in later versions |
 | alchem.dib | Character, right of screen (hides north and right door) |
 | asiantra.dib | Character, right side |
 | atrium.dib | End game screen |
@@ -64,6 +65,7 @@ Note: some files are missing between the MMBAG and ITS/EIT files, they may be un
 | plnwalls.dib / dunrm.dib | Walls, always drawn |
 | queen.dib | Character, middle of room |
 | QUESTION.MID | Plays when quiz is shown |
+| ribbon.dib / medal.dib / ring.dib / trophy.dib | Given as player completes levels achieving certain scores; 2500 / 5000 / 10000 / 15000 |
 | right.wav / wrong.wav | Plays when answer is right/wrong |
 | rmofdoor.dib | Shown after starting game and dismissing grating.dib. Different doors are clickable but has no effect (doesn't change maze) |
 | secnldy1.dib | Character, left of room |
